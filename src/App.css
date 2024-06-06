@@ -1,0 +1,83 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center; /* Center align all content within the .App container */
+  padding: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center align form fields */
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  margin: 0 10px;
+}
+
+.input-group input {
+  padding: 8px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-group button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-group button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.user-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center align user data cards */
+  gap: 20px;
+}
+
+.user {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.user:hover {
+  transform: translateY(-5px);
+}
+
+.user img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+    align-items: center; /* Center align form fields vertically */
+  }
+
+  .input-group label,
+  .input-group input,
+  .input-group button {
+    margin: 5px 0;
+  }
+
+  .user {
+    width: calc(50% - 20px);
+  }
+}
