@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
+  // This handler function is for fetching users data when form is submitted
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
@@ -26,8 +27,10 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <h1>Random User Generator</h1>
+    <div className='container'>
+      <div className='heading'>
+        <h1>Random User Generator</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className='input-group'>
           <label>
@@ -56,29 +59,33 @@ function App() {
               onChange={(e) => setNumUsers(e.target.value)}
             />
           </label>
-          <button type='submit' disabled={isLoading} className='btn-submit'>
-            Fetch Users
+          <button type='submit' disabled={isLoading}>
+            {isLoading ? 'Fetching...' : 'Fetch Users'}
           </button>
         </div>
       </form>
-      {isLoading && <p>Loading...</p>}
-      {results.length > 0 && (
-        <div>
-          <h2>User Data</h2>
-          <div className='user-data'>
-            {results.map((user, index) => (
-              <div key={index} className='user'>
-                <p>
-                  Name: {user.name.first} {user.name.last}
-                </p>
-                <p>Gender: {user.gender}</p>
-                <p>Email: {user.email}</p>
-                <img src={user.picture.large} alt='User-Picture' />
+      <div className='user-container'>
+        <div className='user-data-wrapper'>
+          {isLoading && <p>Loading...</p>}
+          {results.length > 0 && (
+            <React.Fragment>
+              <h2>User Data</h2>
+              <div className='user-data'>
+                {results.map((user, index) => (
+                  <div key={index} className='user'>
+                    <p>
+                      Name: {user.name.first} {user.name.last}
+                    </p>
+                    <p>Gender: {user.gender}</p>
+                    <p>Email: {user.email}</p>
+                    <img src={user.picture.large} alt='User-Picture' />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </React.Fragment>
+          )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
